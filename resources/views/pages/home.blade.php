@@ -11,8 +11,8 @@
                 {{ $intro }}
             </p>
             <p class="mt-4 max-w-2xl text-base leading-7 text-stone-500">
-                Join us for a celebration with soft greens, floral warmth, and a more natural, garden-led feel. This site will
-                hold guest details, travel notes, uploads, and wedding-day updates.
+                We are looking forward to our guests joining us for a weekend of celebration. This site will hold guest
+                details, travel notes, uploads, and wedding-day updates.
             </p>
 
             <div class="mt-8 flex flex-wrap gap-3">
