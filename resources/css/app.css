@@ -25,15 +25,15 @@
     --color-zinc-900: #171717;
     --color-zinc-950: #0a0a0a;
 
-    --color-accent: #6d3d8f;
-    --color-accent-content: #6d3d8f;
+    --color-accent: #5f7f68;
+    --color-accent-content: #5f7f68;
     --color-accent-foreground: var(--color-white);
 }
 
 @layer theme {
     .dark {
-        --color-accent: #dcc8ea;
-        --color-accent-content: #dcc8ea;
+        --color-accent: #d8e3d7;
+        --color-accent-content: #d8e3d7;
         --color-accent-foreground: var(--color-neutral-800);
     }
 }
@@ -62,47 +62,47 @@
         font-family: var(--font-display);
     }
 
-    .bg-thistle-page {
+    .bg-garden-page {
         background:
-            radial-gradient(circle at top, rgba(170, 129, 197, 0.16), transparent 30%),
-            linear-gradient(180deg, #f8f7fb 0%, #f1f3f7 42%, #eef2f3 100%);
+            radial-gradient(circle at top, rgba(163, 188, 164, 0.2), transparent 30%),
+            linear-gradient(180deg, #fbfaf5 0%, #f3f4ec 42%, #eef2ec 100%);
     }
 
-    .bg-thistle-panel {
+    .bg-garden-panel {
         background:
-            linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(244, 241, 249, 0.94));
+            linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(244, 247, 239, 0.96));
     }
 
-    .bg-thistle-soft {
+    .bg-garden-soft {
         background:
-            linear-gradient(135deg, rgba(234, 226, 242, 0.95), rgba(245, 248, 250, 0.95));
+            linear-gradient(135deg, rgba(236, 242, 231, 0.98), rgba(250, 248, 239, 0.98));
     }
 
-    .bg-heather-deep {
+    .bg-sage-deep {
         background:
-            linear-gradient(160deg, #4f3567 0%, #6d3d8f 58%, #8d6cb3 100%);
+            linear-gradient(160deg, #496456 0%, #5f7f68 58%, #7d9b7c 100%);
     }
 
-    .text-thistle {
-        color: #6d3d8f;
+    .text-sage {
+        color: #5f7f68;
     }
 
-    .text-thistle-deep {
-        color: #4f3567;
+    .text-moss {
+        color: #3f5645;
     }
 
-    .border-thistle {
-        border-color: rgba(109, 61, 143, 0.2);
+    .border-sage {
+        border-color: rgba(95, 127, 104, 0.2);
     }
 
-    .shadow-thistle {
-        box-shadow: 0 20px 50px -28px rgba(79, 53, 103, 0.45);
+    .shadow-garden {
+        box-shadow: 0 20px 50px -28px rgba(73, 100, 86, 0.28);
     }
 
-    .coast-grid {
+    .garden-grid {
         background-image:
-            linear-gradient(rgba(109, 61, 143, 0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(109, 61, 143, 0.05) 1px, transparent 1px);
+            linear-gradient(rgba(95, 127, 104, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(95, 127, 104, 0.05) 1px, transparent 1px);
         background-size: 24px 24px;
     }
 }

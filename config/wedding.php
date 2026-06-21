@@ -7,8 +7,8 @@ return [
         'partner_one' => 'Martin Wisener',
         'partner_two' => 'Lyndsey Herkes',
     ],
-    'intro' => 'We are looking forward to a relaxed, joyful day with our favourite people in East Lothian.',
-    'date' => '2027-05-24 13:00:00',
+    'intro' => 'We are looking forward to a relaxed, joyful day with our favourite people at Falside Mill.',
+    'date' => '2027-05-22 13:00:00',
     'timezone' => 'Europe/London',
     'venue' => [
         'name' => 'Falside Mill',

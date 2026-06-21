@@ -15,7 +15,8 @@ class HomeController extends Controller
         );
 
         $today = now()->timezone($weddingDate->timezone)->startOfDay();
-        $daysUntil = max(0, $today->diffInDays($weddingDate, false));
+        $weddingDay = $weddingDate->startOfDay();
+        $daysUntil = max(0, $today->diffInDays($weddingDay, false));
 
         return view('pages.home', [
             'intro' => config('wedding.intro'),
@@ -26,7 +27,7 @@ class HomeController extends Controller
             'countdown' => [
                 'days' => $daysUntil,
                 'weeks' => intdiv($daysUntil, 7),
-                'months' => max(0, $today->diffInMonths($weddingDate, false)),
+                'months' => max(0, $today->diffInMonths($weddingDay, false)),
             ],
         ]);
     }
