@@ -3,30 +3,32 @@
     <head>
         @include('partials.head', ['title' => $title ?? config('wedding.site_name')])
     </head>
-    <body class="min-h-screen bg-stone-50 text-stone-900 antialiased">
-        <div class="absolute inset-x-0 top-0 -z-10 h-80 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.18),transparent_40%),linear-gradient(180deg,#fff7ed,rgba(255,247,237,0))]"></div>
+    <body class="bg-thistle-page min-h-screen text-stone-900 antialiased">
+        <div class="coast-grid absolute inset-0 -z-20 opacity-45"></div>
+        <div class="absolute inset-x-0 top-0 -z-10 h-[28rem] bg-[radial-gradient(circle_at_top,rgba(170,129,197,0.28),transparent_34%),linear-gradient(180deg,rgba(233,239,243,0.65),rgba(233,239,243,0))]"></div>
+        <div class="absolute right-0 top-12 -z-10 h-72 w-72 rounded-full bg-[#d8c5e8]/35 blur-3xl"></div>
 
         <div class="mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-6 lg:px-8">
-            <header class="flex flex-col gap-4 rounded-[2rem] border border-stone-200/80 bg-white/80 px-5 py-4 shadow-sm backdrop-blur lg:flex-row lg:items-center lg:justify-between">
+            <header class="bg-thistle-panel shadow-thistle flex flex-col gap-4 rounded-[2rem] border border-white/70 px-5 py-4 backdrop-blur lg:flex-row lg:items-center lg:justify-between">
                 <a class="flex items-center gap-3" href="{{ route('home') }}">
-                    <span class="flex size-11 items-center justify-center rounded-full bg-rose-100 text-rose-900">
+                    <span class="flex size-11 items-center justify-center rounded-full bg-[#eadff4] text-[#4f3567] ring-1 ring-[#6d3d8f]/15">
                         <x-app-logo-icon class="size-5" />
                     </span>
                     <div>
-                        <p class="text-xs uppercase tracking-[0.35em] text-rose-700">The Wisener Wedding</p>
-                        <p class="font-editorial text-xl">{{ config('wedding.app_name') }}</p>
+                        <p class="text-thistle text-xs uppercase tracking-[0.35em]">The Wisener Wedding</p>
+                        <p class="font-display text-xl">{{ config('wedding.app_name') }}</p>
                     </div>
                 </a>
 
                 <nav class="flex flex-wrap items-center gap-2 text-sm">
-                    <a class="rounded-full px-4 py-2 hover:bg-stone-100" href="{{ route('home') }}">Home</a>
-                    <a class="rounded-full px-4 py-2 hover:bg-stone-100" href="{{ route('venue') }}">Venue</a>
-                    <a class="rounded-full px-4 py-2 hover:bg-stone-100" href="{{ route('hotels-and-taxis') }}">Hotels & Taxis</a>
-                    <a class="rounded-full px-4 py-2 hover:bg-stone-100" href="{{ route('gallery') }}">Gallery</a>
+                    <a class="rounded-full px-4 py-2 text-stone-700 hover:bg-white/70 hover:text-[#4f3567]" href="{{ route('home') }}">Home</a>
+                    <a class="rounded-full px-4 py-2 text-stone-700 hover:bg-white/70 hover:text-[#4f3567]" href="{{ route('venue') }}">Venue</a>
+                    <a class="rounded-full px-4 py-2 text-stone-700 hover:bg-white/70 hover:text-[#4f3567]" href="{{ route('hotels-and-taxis') }}">Hotels & Taxis</a>
+                    <a class="rounded-full px-4 py-2 text-stone-700 hover:bg-white/70 hover:text-[#4f3567]" href="{{ route('gallery') }}">Gallery</a>
                     @auth
-                        <a class="rounded-full bg-stone-900 px-4 py-2 text-white hover:bg-stone-700" href="{{ route('dashboard') }}">Dashboard</a>
+                        <a class="bg-heather-deep rounded-full px-4 py-2 text-white hover:opacity-95" href="{{ route('dashboard') }}">Dashboard</a>
                     @else
-                        <a class="rounded-full bg-stone-900 px-4 py-2 text-white hover:bg-stone-700" href="{{ route('login') }}">Login</a>
+                        <a class="bg-heather-deep rounded-full px-4 py-2 text-white hover:opacity-95" href="{{ route('login') }}">Login</a>
                     @endauth
                 </nav>
             </header>

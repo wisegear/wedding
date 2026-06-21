@@ -11,6 +11,7 @@
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --font-serif: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+    --font-display: 'Baskerville', 'Iowan Old Style', 'Palatino Linotype', serif;
 
     --color-zinc-50: #fafafa;
     --color-zinc-100: #f5f5f5;
@@ -24,15 +25,15 @@
     --color-zinc-900: #171717;
     --color-zinc-950: #0a0a0a;
 
-    --color-accent: #7c2d12;
-    --color-accent-content: #7c2d12;
+    --color-accent: #6d3d8f;
+    --color-accent-content: #6d3d8f;
     --color-accent-foreground: var(--color-white);
 }
 
 @layer theme {
     .dark {
-        --color-accent: #fed7aa;
-        --color-accent-content: #fed7aa;
+        --color-accent: #dcc8ea;
+        --color-accent-content: #dcc8ea;
         --color-accent-foreground: var(--color-neutral-800);
     }
 }
@@ -55,6 +56,54 @@
 @layer utilities {
     .font-editorial {
         font-family: var(--font-serif);
+    }
+
+    .font-display {
+        font-family: var(--font-display);
+    }
+
+    .bg-thistle-page {
+        background:
+            radial-gradient(circle at top, rgba(170, 129, 197, 0.16), transparent 30%),
+            linear-gradient(180deg, #f8f7fb 0%, #f1f3f7 42%, #eef2f3 100%);
+    }
+
+    .bg-thistle-panel {
+        background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(244, 241, 249, 0.94));
+    }
+
+    .bg-thistle-soft {
+        background:
+            linear-gradient(135deg, rgba(234, 226, 242, 0.95), rgba(245, 248, 250, 0.95));
+    }
+
+    .bg-heather-deep {
+        background:
+            linear-gradient(160deg, #4f3567 0%, #6d3d8f 58%, #8d6cb3 100%);
+    }
+
+    .text-thistle {
+        color: #6d3d8f;
+    }
+
+    .text-thistle-deep {
+        color: #4f3567;
+    }
+
+    .border-thistle {
+        border-color: rgba(109, 61, 143, 0.2);
+    }
+
+    .shadow-thistle {
+        box-shadow: 0 20px 50px -28px rgba(79, 53, 103, 0.45);
+    }
+
+    .coast-grid {
+        background-image:
+            linear-gradient(rgba(109, 61, 143, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(109, 61, 143, 0.05) 1px, transparent 1px);
+        background-size: 24px 24px;
     }
 }
 
