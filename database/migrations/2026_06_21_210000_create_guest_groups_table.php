@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('guest_groups', function (Blueprint $table) {
             $table->id();
             $table->string('group_name');
+            $table->string('invitation_code')->nullable()->unique();
             $table->text('notes')->nullable();
             $table->timestamps();
         });

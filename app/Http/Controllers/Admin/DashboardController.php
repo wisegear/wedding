@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\GalleryUpload;
+use App\Models\Guest;
 use App\Models\GuestGroup;
-use App\Models\WeddingGuest;
 use Carbon\CarbonImmutable;
 use Illuminate\Contracts\View\View;
 
@@ -22,7 +22,7 @@ class DashboardController extends Controller
             'weddingDate' => $weddingDate,
             'venue' => config('wedding.venue'),
             'guestGroupCount' => GuestGroup::query()->count(),
-            'guestCount' => WeddingGuest::query()->count(),
+            'guestCount' => Guest::query()->count(),
             'pendingGalleryCount' => GalleryUpload::query()->where('approved', false)->count(),
         ]);
     }

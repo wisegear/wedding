@@ -6,34 +6,32 @@
             <p class="text-sage text-xs uppercase tracking-[0.35em]">Gallery</p>
             <h1 class="font-display mt-4 text-5xl text-[#33463b]">Shared photos from the wedding</h1>
             <p class="mt-4 max-w-3xl text-base leading-7 text-stone-600">
-                Approved guest uploads will appear here. Guests can upload photos after signing in; uploads are held for admin approval first, keeping the public gallery curated and calm.
+                Approved guest uploads will appear here. Choose one or more photos from your phone or computer. Uploaded photos are reviewed before appearing in the gallery.
             </p>
         </div>
 
         @auth
             <div class="rounded-[2rem] border border-[#d8e1d1] bg-[#eef3e8] p-6">
-                <h2 class="text-xl font-semibold text-stone-900">Upload a photo</h2>
-                <form class="mt-4 grid gap-4 md:grid-cols-[1fr_1fr_auto]" method="POST" action="{{ route('gallery.upload') }}" enctype="multipart/form-data">
+                <h2 class="text-xl font-semibold text-stone-900">Upload photos</h2>
+                <form class="mt-4 grid gap-4 md:grid-cols-[1fr_auto]" method="POST" action="{{ route('gallery.upload') }}" enctype="multipart/form-data">
                     @csrf
                     <div>
-                        <label class="mb-2 block text-sm font-medium text-stone-700" for="image">Image</label>
-                        <input class="block w-full rounded-2xl border border-[#c8d6c5] bg-white px-4 py-3 text-sm" id="image" name="image" type="file" accept="image/*" required>
-                        @error('image')
+                        <label class="mb-2 block text-sm font-medium text-stone-700" for="images">Photos</label>
+                        <input class="block w-full rounded-2xl border border-[#c8d6c5] bg-white px-4 py-3 text-sm" id="images" name="images[]" type="file" accept="image/*" multiple required>
+                        @error('images')
                             <p class="mt-2 text-sm text-red-700">{{ $message }}</p>
                         @enderror
-                    </div>
-
-                    <div>
-                        <label class="mb-2 block text-sm font-medium text-stone-700" for="caption">Caption</label>
-                        <input class="block w-full rounded-2xl border border-[#c8d6c5] bg-white px-4 py-3 text-sm" id="caption" name="caption" type="text" maxlength="255" value="{{ old('caption') }}">
-                        @error('caption')
-                            <p class="mt-2 text-sm text-red-700">{{ $message }}</p>
-                        @enderror
+                        @if ($errors->has('images.*'))
+                            <p class="mt-2 text-sm text-red-700">{{ $errors->first('images.*') }}</p>
+                        @endif
+                        <p class="mt-2 text-sm text-stone-600">
+                            Choose one or more photos from your phone or computer. Uploaded photos are reviewed before appearing in the gallery.
+                        </p>
                     </div>
 
                     <div class="flex items-end">
                         <button class="bg-sage-deep w-full rounded-full px-5 py-3 text-sm font-semibold text-white hover:opacity-95 md:w-auto" type="submit">
-                            Upload
+                            Upload photos
                         </button>
                     </div>
                 </form>
@@ -48,17 +46,81 @@
 
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             @forelse ($uploads as $upload)
-                <article class="shadow-garden overflow-hidden rounded-[1.75rem] border border-white/80 bg-white/92">
-                    <img class="aspect-[4/3] w-full object-cover" src="{{ asset('storage/'.$upload->path) }}" alt="{{ $upload->caption ?? $upload->original_filename }}">
-                    <div class="p-4">
-                        <p class="text-sm font-medium text-stone-900">{{ $upload->caption ?: $upload->original_filename }}</p>
-                    </div>
-                </article>
+                <button
+                    class="shadow-garden overflow-hidden rounded-[1.75rem] border border-white/80 bg-white/92 text-left transition hover:scale-[1.01] hover:shadow-lg"
+                    data-gallery-image="{{ asset('storage/'.$upload->display_path) }}"
+                    type="button"
+                >
+                    <img class="aspect-[4/3] w-full object-cover" src="{{ asset('storage/'.$upload->display_path) }}" alt="Wedding gallery photo">
+                </button>
             @empty
                 @for ($i = 1; $i <= 6; $i++)
                     <div class="aspect-[4/3] rounded-[1.75rem] border border-dashed border-[#d8e1d1] bg-[linear-gradient(145deg,#eef3e8,#f8f1e7)]"></div>
                 @endfor
             @endforelse
         </div>
+
+        @if ($uploads->hasPages())
+            <div class="flex justify-center">
+                <div class="rounded-[1.75rem] border border-white/80 bg-white/92 px-4 py-3 shadow-garden">
+                    {{ $uploads->links() }}
+                </div>
+            </div>
+        @endif
+
+        <div class="fixed inset-0 z-50 hidden items-center justify-center bg-stone-950/85 p-6" id="gallery-lightbox">
+            <button class="absolute right-6 top-6 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-stone-900 hover:bg-white" id="gallery-lightbox-close" type="button">
+                Close
+            </button>
+
+            <img class="max-h-[85vh] w-auto max-w-full rounded-[1.75rem] object-contain shadow-2xl" id="gallery-lightbox-image" src="" alt="Expanded wedding gallery photo">
+        </div>
     </section>
 @endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lightbox = document.querySelector('#gallery-lightbox');
+            const lightboxImage = document.querySelector('#gallery-lightbox-image');
+            const closeButton = document.querySelector('#gallery-lightbox-close');
+            const triggers = document.querySelectorAll('[data-gallery-image]');
+
+            const closeLightbox = () => {
+                lightbox?.classList.add('hidden');
+                lightbox?.classList.remove('flex');
+                if (lightboxImage) {
+                    lightboxImage.src = '';
+                }
+            };
+
+            triggers.forEach((trigger) => {
+                trigger.addEventListener('click', () => {
+                    const imageSrc = trigger.getAttribute('data-gallery-image');
+
+                    if (!lightbox || !lightboxImage || !imageSrc) {
+                        return;
+                    }
+
+                    lightboxImage.src = imageSrc;
+                    lightbox.classList.remove('hidden');
+                    lightbox.classList.add('flex');
+                });
+            });
+
+            closeButton?.addEventListener('click', closeLightbox);
+
+            lightbox?.addEventListener('click', (event) => {
+                if (event.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
+@endpush

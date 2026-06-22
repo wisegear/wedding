@@ -3,41 +3,71 @@
 namespace App\Http\Controllers;
 
 use App\Models\GalleryUpload;
+use App\Services\GalleryImageProcessor;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class GalleryController extends Controller
 {
+    public function __construct(
+        private readonly GalleryImageProcessor $galleryImageProcessor,
+    ) {}
+
     public function __invoke(): View
     {
         return view('pages.gallery', [
             'uploads' => GalleryUpload::query()
                 ->where('approved', true)
                 ->latest()
-                ->get(),
+                ->paginate(10),
         ]);
     }
 
     public function store(Request $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'image' => ['required', 'image', 'max:10240'],
-            'caption' => ['nullable', 'string', 'max:255'],
+        $request->validate([
+            'images' => ['required', 'array', 'min:1'],
+            'images.*' => ['required', 'file', 'mimes:jpg,jpeg,png,webp,heic,heif', 'max:20480'],
         ]);
 
-        $path = $request->file('image')->store('wedding-gallery', 'public');
+        $uploadedCount = 0;
+        $failedFiles = [];
 
-        GalleryUpload::query()->create([
-            'user_id' => $request->user()->id,
-            'original_filename' => $request->file('image')->getClientOriginalName(),
-            'path' => $path,
-            'caption' => $validated['caption'] ?? null,
-            'approved' => false,
-        ]);
+        foreach ($request->file('images', []) as $image) {
+            try {
+                $storedPaths = $this->galleryImageProcessor->store($image);
+
+                GalleryUpload::query()->create([
+                    'uploaded_by' => $request->user()->id,
+                    'original_filename' => $storedPaths['original_filename'],
+                    'original_path' => $storedPaths['original_path'],
+                    'display_path' => $storedPaths['display_path'],
+                    'approved' => false,
+                ]);
+
+                $uploadedCount++;
+            } catch (\Throwable) {
+                $failedFiles[] = $image->getClientOriginalName();
+            }
+        }
+
+        if ($uploadedCount === 0) {
+            throw ValidationException::withMessages([
+                'images' => 'We could not process your photos. Please try again with different image files.',
+            ]);
+        }
+
+        $message = $uploadedCount.' '.Str::plural('photo', $uploadedCount).' uploaded successfully. They will appear once approved.';
+
+        if ($failedFiles !== []) {
+            $message .= ' '.count($failedFiles).' file'.(count($failedFiles) === 1 ? ' was' : 's were').' skipped because they could not be processed.';
+        }
 
         return redirect()
             ->route('gallery')
-            ->with('status', 'Photo uploaded successfully. It will appear once approved.');
+            ->with('status', $message);
     }
 }

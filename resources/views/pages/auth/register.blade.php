@@ -7,17 +7,34 @@
 
         <form method="POST" action="{{ route('register.store') }}" class="flex flex-col gap-6">
             @csrf
-            <!-- Name -->
-            <flux:input
-                name="name"
-                :label="__('Name')"
-                :value="old('name')"
-                type="text"
-                required
-                autofocus
-                autocomplete="name"
-                :placeholder="__('Full name')"
-            />
+            @if ($errors->has('guest_lookup'))
+                <div class="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+                    {{ $errors->first('guest_lookup') }}
+                </div>
+            @endif
+
+            <div class="grid gap-4 sm:grid-cols-2">
+                <flux:input
+                    name="first_name"
+                    :label="__('First name')"
+                    :value="old('first_name')"
+                    type="text"
+                    required
+                    autofocus
+                    autocomplete="given-name"
+                    :placeholder="__('First name')"
+                />
+
+                <flux:input
+                    name="last_name"
+                    :label="__('Last name')"
+                    :value="old('last_name')"
+                    type="text"
+                    required
+                    autocomplete="family-name"
+                    :placeholder="__('Last name')"
+                />
+            </div>
 
             <!-- Email Address -->
             <flux:input

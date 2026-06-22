@@ -11,10 +11,10 @@ class GalleryUpload extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'uploaded_by',
         'original_filename',
-        'path',
-        'caption',
+        'original_path',
+        'display_path',
         'approved',
     ];
 
@@ -27,6 +27,6 @@ class GalleryUpload extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'uploaded_by');
     }
 }

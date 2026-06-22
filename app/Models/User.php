@@ -7,7 +7,9 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
@@ -53,9 +55,27 @@ class User extends Authenticatable implements PasskeyUser
         ];
     }
 
-    public function weddingGuests(): HasMany
+    public function guestGroups(): BelongsToMany
     {
-        return $this->hasMany(WeddingGuest::class);
+        return $this->belongsToMany(GuestGroup::class, 'guest_group_user')
+            ->withTimestamps();
+    }
+
+    public function guestLinks(): HasMany
+    {
+        return $this->hasMany(GuestGroupUser::class);
+    }
+
+    public function guest(): HasOneThrough
+    {
+        return $this->hasOneThrough(
+            Guest::class,
+            GuestGroupUser::class,
+            'user_id',
+            'id',
+            'id',
+            'guest_id',
+        );
     }
 
     public function galleryUploads(): HasMany

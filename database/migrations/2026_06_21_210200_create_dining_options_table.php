@@ -10,9 +10,9 @@ return new class extends Migration
     {
         Schema::create('dining_options', function (Blueprint $table) {
             $table->id();
+            $table->string('course');
             $table->string('name');
             $table->text('description')->nullable();
-            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

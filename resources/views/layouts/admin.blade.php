@@ -14,7 +14,7 @@
 
                     <nav class="flex flex-wrap items-center gap-2 text-sm">
                         <a class="rounded-full px-4 py-2 hover:bg-stone-100" href="{{ route('admin.dashboard') }}">Dashboard</a>
-                        <a class="rounded-full px-4 py-2 hover:bg-stone-100" href="{{ route('admin.guests.index') }}">Guests</a>
+                        <a class="rounded-full px-4 py-2 hover:bg-stone-100" href="{{ route('admin.guest-groups.index') }}">Guests</a>
                         <a class="rounded-full px-4 py-2 hover:bg-stone-100" href="{{ route('admin.rsvps.index') }}">RSVPs</a>
                         <a class="rounded-full px-4 py-2 hover:bg-stone-100" href="{{ route('admin.dining.index') }}">Dining</a>
                         <a class="rounded-full px-4 py-2 hover:bg-stone-100" href="{{ route('admin.gallery.index') }}">Gallery</a>
@@ -24,6 +24,12 @@
             </header>
 
             <main class="flex-1 py-8">
+                @if (session('status'))
+                    <div class="mb-6 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
                 @yield('content')
             </main>
         </div>
