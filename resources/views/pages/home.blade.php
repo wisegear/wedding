@@ -11,8 +11,8 @@
                 {{ $intro }}
             </p>
             <p class="mt-4 max-w-2xl text-base leading-7 text-stone-500">
-                We are looking forward to our guests joining us for a weekend of celebration. This site will hold guest
-                details, travel notes, uploads, and wedding-day updates.
+                We are looking forward to our guests joining us for a weekend of celebration. This site allows you RSVP, 
+                tell us your meal preferences, and upload photos from the day. We will also be sharing travel information and local recommendations here.
             </p>
 
             <div class="mt-8 flex flex-wrap gap-3">
@@ -66,9 +66,10 @@
     <section class="mt-12 grid gap-6 lg:grid-cols-3">
         <article class="shadow-garden rounded-[2rem] border border-white/80 bg-white/92 p-6">
             <p class="text-sage text-xs uppercase tracking-[0.35em]">The Day</p>
-            <h2 class="font-display mt-4 text-3xl text-[#33463b]">A calm day with flowers, greenery, and soft light.</h2>
+            <h2 class="font-display mt-4 text-3xl text-[#33463b]">A day to remember</h2>
             <p class="mt-4 text-sm leading-7 text-stone-600">
-                We are aiming for something elegant and relaxed: a beautiful venue, good food, and a softer floral atmosphere rather than anything over-styled.
+                Martin & Lyndsey are looking forward to celebrating their wedding with friends and family. 
+                The day will be filled with love, laughter, and memories to last a lifetime.
             </p>
         </article>
 
@@ -76,13 +77,14 @@
             <p class="text-sage text-xs uppercase tracking-[0.35em]">Venue</p>
             <h2 class="font-display mt-4 text-3xl text-[#33463b]">{{ $venue['name'] }}</h2>
             <p class="mt-4 text-sm leading-7 text-stone-600">
-                Historic, warm, and full of character. The venue page will hold directions, timings, and local information as plans firm up around the day.
+                Historic, warm, and full of character. The venue has been lovingly restored, the perfect setting for a wedding celebration. 
+                The surrounding area offers stunning views plenty space for guests.
             </p>
         </article>
 
         <article class="rounded-[2rem] border border-[#e7ddd0] bg-[#f8f1e7] p-6">
             <p class="text-xs uppercase tracking-[0.35em] text-[#9a7756]">Guest Info</p>
-            <h2 class="font-display mt-4 text-3xl text-[#33463b]">Travel, taxis, and photo sharing</h2>
+            <h2 class="font-display mt-4 text-3xl text-[#33463b]">Everything you need</h2>
             <p class="mt-4 text-sm leading-7 text-stone-600">
                 The site already includes the first public sections for travel planning and gallery uploads, with the admin side ready for moderation and guest management.
             </p>
