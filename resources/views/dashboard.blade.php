@@ -63,15 +63,5 @@
                 <p class="mt-2 text-sm text-stone-600">Household membership and contact details will live here.</p>
             </article>
         </section>
-
-        @if (auth()->user()->isAdmin())
-            <section class="rounded-3xl border border-stone-200 bg-white p-6 shadow-sm">
-                <p class="text-xs font-semibold uppercase tracking-[0.35em] text-rose-700">Admin Access</p>
-                <p class="mt-3 text-lg font-semibold text-stone-900">This account can access the admin area.</p>
-                <a class="mt-4 inline-flex text-sm font-medium text-rose-700 hover:text-rose-900" href="{{ route('admin.dashboard') }}">
-                    Open admin dashboard
-                </a>
-            </section>
-        @endif
     </div>
 </x-layouts::app>
