@@ -17,7 +17,7 @@
                     </p>
                 </div>
 
-                <a class="inline-flex items-center justify-center rounded-full border border-stone-300 px-5 py-3 text-sm font-medium text-stone-700 hover:border-stone-400 hover:text-stone-900" href="{{ route('admin.dining.selections') }}">
+                <a class="inline-flex items-center justify-center rounded-full border border-stone-300 bg-gray-900 px-5 py-3 text-sm font-medium text-stone-100 hover:border-stone-400 hover:text-stone-900" href="{{ route('admin.dining.selections') }}">
                     View guest selections
                 </a>
             </div>
