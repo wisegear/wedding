@@ -17,6 +17,9 @@ class GuestGroupController extends Controller
     {
         return view('admin.guest-groups.index', [
             'guestGroups' => GuestGroup::query()
+                ->with(['guests' => fn ($query) => $query
+                    ->select('id', 'guest_group_id', 'display_name')
+                    ->orderBy('display_name')])
                 ->withCount('guests')
                 ->orderBy('group_name')
                 ->get(),
@@ -27,6 +30,17 @@ class GuestGroupController extends Controller
     {
         return view('admin.guest-groups.create', [
             'guestGroup' => new GuestGroup(),
+        ]);
+    }
+
+    public function guestList(): View
+    {
+        return view('admin.guest-groups.guest-list', [
+            'guests' => Guest::query()
+                ->with(['group:id,group_name'])
+                ->orderBy('last_name')
+                ->orderBy('first_name')
+                ->get(),
         ]);
     }
 

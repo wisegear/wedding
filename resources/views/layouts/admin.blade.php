@@ -33,8 +33,8 @@
                     <flux:sidebar.item icon="folder-git-2" :href="route('admin.gallery.index')" :current="request()->routeIs('admin.gallery.*')" wire:navigate>
                         {{ __('Gallery') }}
                     </flux:sidebar.item>
-                    <flux:sidebar.item icon="layout-grid" :href="route('home')">
-                        {{ __('Public site') }}
+                    <flux:sidebar.item icon="home" :href="route('home')">
+                        {{ __('Homepage') }}
                     </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
@@ -75,6 +75,9 @@
                     <flux:menu.separator />
 
                     <flux:menu.radio.group>
+                        <flux:menu.item :href="route('home')" icon="home">
+                            {{ __('Homepage') }}
+                        </flux:menu.item>
                         <flux:menu.item :href="route('profile.edit')" icon="cog" wire:navigate>
                             {{ __('Settings') }}
                         </flux:menu.item>

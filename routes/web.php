@@ -31,6 +31,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/guest-groups', [AdminGuestGroupController::class, 'index'])->name('admin.guest-groups.index');
+    Route::get('/guest-list', [AdminGuestGroupController::class, 'guestList'])->name('admin.guest-groups.guest-list');
     Route::get('/guest-groups/create', [AdminGuestGroupController::class, 'create'])->name('admin.guest-groups.create');
     Route::post('/guest-groups', [AdminGuestGroupController::class, 'store'])->name('admin.guest-groups.store');
     Route::get('/guest-groups/{guestGroup}/edit', [AdminGuestGroupController::class, 'edit'])->name('admin.guest-groups.edit');

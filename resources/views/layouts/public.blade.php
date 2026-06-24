@@ -28,6 +28,7 @@
                     @auth
                         <a class="bg-sage-deep rounded-full px-4 py-2 text-white hover:opacity-95" href="{{ route('dashboard') }}">Dashboard</a>
                     @else
+                        <a class="rounded-full bg-[#dbe7d8] px-4 py-2 text-[#2f4635] hover:bg-[#cfdecb]" href="{{ route('register') }}">Register</a>
                         <a class="bg-sage-deep rounded-full px-4 py-2 text-white hover:opacity-95" href="{{ route('login') }}">Login</a>
                     @endauth
                 </nav>
