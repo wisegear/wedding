@@ -63,7 +63,7 @@
         </div>
     </section>
 
-    <section class="mt-12 grid gap-6 lg:grid-cols-3">
+    <section class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <article class="shadow-garden rounded-[2rem] border border-white/80 bg-white/92 p-6">
             <p class="text-sage text-xs uppercase tracking-[0.35em]">The Day</p>
             <h2 class="font-display mt-4 text-3xl text-[#33463b]">A day to remember</h2>
@@ -88,6 +88,18 @@
             <p class="mt-4 text-sm leading-7 text-stone-600">
                 The site already includes the first public sections for travel planning and gallery uploads, with the admin side ready for moderation and guest management.
             </p>
+        </article>
+
+        <article class="shadow-garden rounded-[2rem] border border-white/80 bg-white/92 p-6">
+            <p class="text-sage text-xs uppercase tracking-[0.35em]">QR Code</p>
+            <h2 class="font-display mt-4 text-3xl text-[#33463b]">Share QR Code</h2>
+            <div class="mt-5 flex justify-center rounded-3xl bg-white p-4 ring-1 ring-[#5f7f68]/15">
+                <img
+                    class="aspect-square w-full max-w-48 object-contain"
+                    src="{{ asset('images/wedding-qr.png') }}"
+                    alt="QR code for the wedding website"
+                >
+            </div>
         </article>
     </section>
 @endsection
