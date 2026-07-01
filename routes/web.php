@@ -10,12 +10,16 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\GuestDiningController;
 use App\Http\Controllers\GuestRsvpController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\QuestionAnswerController;
 use App\Http\Controllers\TravelController;
 use App\Http\Controllers\VenueController;
+use App\Http\Controllers\WeddingPartyController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/venue', VenueController::class)->name('venue');
+Route::get('/wedding-party', WeddingPartyController::class)->name('wedding-party');
+Route::get('/q-and-a', QuestionAnswerController::class)->name('q-and-a');
 Route::get('/hotels-and-taxis', TravelController::class)->name('hotels-and-taxis');
 Route::get('/gallery', GalleryController::class)->name('gallery');
 
