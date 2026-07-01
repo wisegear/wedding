@@ -40,9 +40,9 @@
 
 @layer theme {
     .dark {
-        --color-accent: var(--color-blush-200);
-        --color-accent-content: var(--color-blush-200);
-        --color-accent-foreground: #3f352f;
+        --color-accent: var(--color-sage-400);
+        --color-accent-content: var(--color-sage-400);
+        --color-accent-foreground: #2f3328;
     }
 }
 
@@ -71,28 +71,43 @@
     }
 
     .bg-garden-page {
-        background:
-            radial-gradient(circle at top, rgba(239, 191, 187, 0.28), transparent 30%),
-            linear-gradient(180deg, #fff8f6 0%, #f8efec 44%, #eeeee5 100%);
+        background: #f4f5ef;
     }
 
     .bg-garden-panel {
-        background:
-            linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 229, 228, 0.52));
+        background: #fcfcf8;
     }
 
     .bg-garden-soft {
-        background:
-            linear-gradient(135deg, rgba(255, 229, 228, 0.86), rgba(237, 237, 223, 0.96));
+        background: #ededdf;
+    }
+
+    .bg-garden-blend {
+        background: #ededdf;
+    }
+
+    .bg-garden-blush {
+        background: #fff8f6;
     }
 
     .bg-sage-deep {
-        background:
-            linear-gradient(160deg, #4d513f 0%, #666956 54%, #8d8e7c 100%);
+        background: #666956;
+    }
+
+    .bg-blush-button {
+        background: #ffe5e4;
+    }
+
+    .bg-sage-button-soft {
+        background: #ededdf;
     }
 
     .text-sage {
         color: #666956;
+    }
+
+    .text-taupe {
+        color: #b08a81;
     }
 
     .text-moss {

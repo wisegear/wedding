@@ -56,8 +56,8 @@
                     data-venue-location="{{ $venueAddress }}"
                     data-venue-url="{{ $venue['url'] }}"
                 ></div>
-                <aside class="rounded-[1.75rem] border border-[#efbfbb] bg-[#ffe5e4] p-5">
-                    <p class="text-xs uppercase tracking-[0.35em] text-[#b08a81]">Get Directions</p>
+                <aside class="bg-garden-blend rounded-[1.75rem] border border-[#d8d8ca] p-5">
+                    <p class="text-taupe text-xs uppercase tracking-[0.35em]">Get Directions</p>
                     <h2 class="font-display mt-3 text-2xl text-[#4d513f]">{{ $venue['name'] }}</h2>
                     <p class="mt-3 text-sm leading-7 text-stone-600">{{ $venueAddress }}</p>
                     <p class="mt-3 text-sm leading-7 text-stone-600">
@@ -74,7 +74,7 @@
                             Google Maps
                         </a>
                         <a
-                            class="bg-sage-deep inline-flex justify-center rounded-full px-4 py-2 text-sm font-semibold text-white hover:opacity-95"
+                            class="bg-blush-button inline-flex justify-center rounded-full px-4 py-2 text-sm font-semibold text-[#4d513f] hover:bg-[#f6d6d4]"
                             href="https://maps.apple.com/?daddr={{ $encodedVenueAddress }}"
                             target="_blank"
                             rel="noopener noreferrer"

@@ -19,7 +19,7 @@
                 <a class="bg-sage-deep rounded-full px-5 py-3 text-sm font-semibold text-white hover:opacity-95" href="{{ route('venue') }}">
                     Venue
                 </a>
-                <a class="rounded-full bg-[#ffe5e4] px-5 py-3 text-sm font-semibold text-[#4d513f] hover:bg-[#efbfbb]" href="{{ auth()->check() ? route('dashboard') : route('login') }}">
+                <a class="bg-blush-button rounded-full px-5 py-3 text-sm font-semibold text-[#4d513f] hover:bg-[#f6d6d4]" href="{{ auth()->check() ? route('dashboard') : route('login') }}">
                     RSVP / Login
                 </a>
                 <a class="border-sage rounded-full border bg-white/80 px-5 py-3 text-sm font-semibold text-[#4d513f] hover:bg-white" href="{{ route('gallery') }}">
@@ -37,18 +37,18 @@
                 >
             </div>
 
-            <div class="shadow-garden relative z-10 rounded-[2rem] border border-white/80 bg-[#fff8f6]/92 p-6">
+            <div class="shadow-garden relative z-10 rounded-[2rem] border border-white/80 bg-[#f7f8f1]/92 p-6">
                 <p class="text-sage text-xs uppercase tracking-[0.35em]">Countdown</p>
                 <div class="mt-6 grid grid-cols-3 gap-3">
-                    <div class="rounded-3xl bg-[#ffe5e4] p-4">
+                    <div class="bg-garden-blend rounded-3xl p-4">
                         <p class="text-3xl font-semibold">{{ number_format($countdown['days']) }}</p>
                         <p class="mt-1 text-xs uppercase tracking-[0.3em] text-stone-500">Days</p>
                     </div>
-                    <div class="rounded-3xl bg-[#f4d9d6] p-4">
+                    <div class="rounded-3xl bg-[#e4e5d6] p-4">
                         <p class="text-3xl font-semibold">{{ number_format($countdown['weeks']) }}</p>
                         <p class="mt-1 text-xs uppercase tracking-[0.3em] text-stone-500">Weeks</p>
                     </div>
-                    <div class="rounded-3xl bg-[#ededdf] p-4">
+                    <div class="bg-garden-blush rounded-3xl p-4">
                         <p class="text-3xl font-semibold">{{ number_format($countdown['months']) }}</p>
                         <p class="mt-1 text-xs uppercase tracking-[0.3em] text-stone-500">Months</p>
                     </div>
@@ -73,7 +73,7 @@
             </p>
         </article>
 
-        <article class="rounded-[2rem] border border-[#d8d8ca] bg-[#ededdf] p-6">
+        <article class="bg-garden-blend rounded-[2rem] border border-[#d8d8ca] p-6">
             <p class="text-sage text-xs uppercase tracking-[0.35em]">Venue</p>
             <h2 class="font-display mt-4 text-3xl text-[#4d513f]">{{ $venue['name'] }}</h2>
             <p class="mt-4 text-sm leading-7 text-stone-600">
@@ -82,8 +82,8 @@
             </p>
         </article>
 
-        <article class="rounded-[2rem] border border-[#efbfbb] bg-[#ffe5e4] p-6">
-            <p class="text-xs uppercase tracking-[0.35em] text-[#b08a81]">Guest Info</p>
+        <article class="bg-garden-blush rounded-[2rem] border border-[#e6c9c7] p-6">
+            <p class="text-taupe text-xs uppercase tracking-[0.35em]">Guest Info</p>
             <h2 class="font-display mt-4 text-3xl text-[#4d513f]">Everything you need</h2>
             <p class="mt-4 text-sm leading-7 text-stone-600">
                 The site already includes the first public sections for travel planning and gallery uploads, with the admin side ready for moderation and guest management.

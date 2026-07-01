@@ -18,15 +18,15 @@
                 </p>
             </article>
 
-            <article class="rounded-[2rem] border border-[#d8d8ca] bg-[#ededdf] p-6">
+            <article class="bg-garden-blend rounded-[2rem] border border-[#d8d8ca] p-6">
                 <p class="text-sage text-xs uppercase tracking-[0.35em]">Taxi Numbers</p>
                 <p class="mt-4 text-sm leading-7 text-stone-600">
                     Trusted local taxi firms and evening return options will be listed here once confirmed.
                 </p>
             </article>
 
-            <article class="rounded-[2rem] border border-[#efbfbb] bg-[#ffe5e4] p-6">
-                <p class="text-xs uppercase tracking-[0.35em] text-[#b08a81]">Travel Tips</p>
+            <article class="bg-garden-blush rounded-[2rem] border border-[#e6c9c7] p-6">
+                <p class="text-taupe text-xs uppercase tracking-[0.35em]">Travel Tips</p>
                 <p class="mt-4 text-sm leading-7 text-stone-600">
                     Practical notes such as journey times, nearby stations, and late-night travel advice will live here.
                 </p>

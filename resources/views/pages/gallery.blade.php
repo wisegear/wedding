@@ -11,7 +11,7 @@
         </div>
 
         @auth
-            <div class="rounded-[2rem] border border-[#d8d8ca] bg-[#ededdf] p-6">
+            <div class="bg-garden-blend rounded-[2rem] border border-[#d8d8ca] p-6">
                 <h2 class="text-xl font-semibold text-stone-900">Upload photos</h2>
                 <form class="mt-4 grid gap-4 md:grid-cols-[1fr_auto]" method="POST" action="{{ route('gallery.upload') }}" enctype="multipart/form-data">
                     @csrf
@@ -37,7 +37,7 @@
                 </form>
             </div>
         @else
-            <div class="rounded-[2rem] border border-[#efbfbb] bg-[#ffe5e4] p-6">
+            <div class="bg-garden-blush rounded-[2rem] border border-[#e6c9c7] p-6">
                 <p class="text-sm text-stone-700">
                     Sign in to upload wedding photos. Uploaded images are reviewed by an admin before appearing publicly.
                 </p>
@@ -55,7 +55,7 @@
                 </button>
             @empty
                 @for ($i = 1; $i <= 6; $i++)
-                    <div class="aspect-[4/3] rounded-[1.75rem] border border-dashed border-[#d8d8ca] bg-[linear-gradient(145deg,#ededdf,#ffe5e4)]"></div>
+                    <div class="aspect-[4/3] rounded-[1.75rem] border border-dashed border-[#d8d8ca] bg-[#ededdf]"></div>
                 @endfor
             @endforelse
         </div>
