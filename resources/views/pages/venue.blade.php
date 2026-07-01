@@ -18,7 +18,7 @@
     <section class="space-y-8">
         <div class="shadow-garden rounded-[2rem] border border-white/80 bg-white/92 p-8">
             <p class="text-sage text-xs uppercase tracking-[0.35em]">Venue</p>
-            <h1 class="font-display mt-4 text-5xl text-[#33463b]">{{ $venue['name'] }}</h1>
+            <h1 class="font-display mt-4 text-5xl text-[#4d513f]">{{ $venue['name'] }}</h1>
             <p class="mt-3 text-base text-stone-600">{{ $venueAddress }}</p>
             <p class="mt-4 max-w-4xl text-base leading-7 text-stone-600">
                 {{ $venue['name'] }} will host the full celebration. From a get together on Friday night,
@@ -51,14 +51,14 @@
             <div class="mt-4 grid gap-5 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start">
                 <div
                     id="venue-map"
-                    class="h-[26rem] rounded-[1.75rem] border border-[#d8e1d1]"
+                    class="h-[26rem] rounded-[1.75rem] border border-[#d8d8ca]"
                     data-venue-name="{{ $venue['name'] }}"
                     data-venue-location="{{ $venueAddress }}"
                     data-venue-url="{{ $venue['url'] }}"
                 ></div>
-                <aside class="rounded-[1.75rem] border border-[#e7ddd0] bg-[#f8f1e7] p-5">
-                    <p class="text-xs uppercase tracking-[0.35em] text-[#9a7756]">Get Directions</p>
-                    <h2 class="font-display mt-3 text-2xl text-[#33463b]">{{ $venue['name'] }}</h2>
+                <aside class="rounded-[1.75rem] border border-[#efbfbb] bg-[#ffe5e4] p-5">
+                    <p class="text-xs uppercase tracking-[0.35em] text-[#b08a81]">Get Directions</p>
+                    <h2 class="font-display mt-3 text-2xl text-[#4d513f]">{{ $venue['name'] }}</h2>
                     <p class="mt-3 text-sm leading-7 text-stone-600">{{ $venueAddress }}</p>
                     <p class="mt-3 text-sm leading-7 text-stone-600">
                         Get directions from your current location using your preferred maps app.

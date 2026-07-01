@@ -25,16 +25,24 @@
     --color-zinc-900: #171717;
     --color-zinc-950: #0a0a0a;
 
-    --color-accent: #5f7f68;
-    --color-accent-content: #5f7f68;
+    --color-blush-50: #fff8f6;
+    --color-blush-100: #ffe5e4;
+    --color-blush-200: #efbfbb;
+    --color-taupe-400: #b08a81;
+    --color-sage-400: #8d8e7c;
+    --color-olive-700: #666956;
+    --color-moss-800: #4d513f;
+
+    --color-accent: var(--color-olive-700);
+    --color-accent-content: var(--color-olive-700);
     --color-accent-foreground: var(--color-white);
 }
 
 @layer theme {
     .dark {
-        --color-accent: #d8e3d7;
-        --color-accent-content: #d8e3d7;
-        --color-accent-foreground: var(--color-neutral-800);
+        --color-accent: var(--color-blush-200);
+        --color-accent-content: var(--color-blush-200);
+        --color-accent-foreground: #3f352f;
     }
 }
 
@@ -64,45 +72,45 @@
 
     .bg-garden-page {
         background:
-            radial-gradient(circle at top, rgba(163, 188, 164, 0.2), transparent 30%),
-            linear-gradient(180deg, #fbfaf5 0%, #f3f4ec 42%, #eef2ec 100%);
+            radial-gradient(circle at top, rgba(239, 191, 187, 0.28), transparent 30%),
+            linear-gradient(180deg, #fff8f6 0%, #f8efec 44%, #eeeee5 100%);
     }
 
     .bg-garden-panel {
         background:
-            linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(244, 247, 239, 0.96));
+            linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 229, 228, 0.52));
     }
 
     .bg-garden-soft {
         background:
-            linear-gradient(135deg, rgba(236, 242, 231, 0.98), rgba(250, 248, 239, 0.98));
+            linear-gradient(135deg, rgba(255, 229, 228, 0.86), rgba(237, 237, 223, 0.96));
     }
 
     .bg-sage-deep {
         background:
-            linear-gradient(160deg, #496456 0%, #5f7f68 58%, #7d9b7c 100%);
+            linear-gradient(160deg, #4d513f 0%, #666956 54%, #8d8e7c 100%);
     }
 
     .text-sage {
-        color: #5f7f68;
+        color: #666956;
     }
 
     .text-moss {
-        color: #3f5645;
+        color: #4d513f;
     }
 
     .border-sage {
-        border-color: rgba(95, 127, 104, 0.2);
+        border-color: rgba(102, 105, 86, 0.22);
     }
 
     .shadow-garden {
-        box-shadow: 0 20px 50px -28px rgba(73, 100, 86, 0.28);
+        box-shadow: 0 20px 50px -28px rgba(102, 105, 86, 0.32);
     }
 
     .garden-grid {
         background-image:
-            linear-gradient(rgba(95, 127, 104, 0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(95, 127, 104, 0.05) 1px, transparent 1px);
+            linear-gradient(rgba(102, 105, 86, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(102, 105, 86, 0.05) 1px, transparent 1px);
         background-size: 24px 24px;
     }
 }

@@ -4,20 +4,20 @@
     <section class="space-y-8">
         <div class="shadow-garden rounded-[2rem] border border-white/80 bg-white/92 p-8">
             <p class="text-sage text-xs uppercase tracking-[0.35em]">Gallery</p>
-            <h1 class="font-display mt-4 text-5xl text-[#33463b]">Shared photos from the wedding</h1>
+            <h1 class="font-display mt-4 text-5xl text-[#4d513f]">Shared photos from the wedding</h1>
             <p class="mt-4 max-w-3xl text-base leading-7 text-stone-600">
                 Approved guest uploads will appear here. Choose one or more photos from your phone or computer. Uploaded photos are reviewed before appearing in the gallery.
             </p>
         </div>
 
         @auth
-            <div class="rounded-[2rem] border border-[#d8e1d1] bg-[#eef3e8] p-6">
+            <div class="rounded-[2rem] border border-[#d8d8ca] bg-[#ededdf] p-6">
                 <h2 class="text-xl font-semibold text-stone-900">Upload photos</h2>
                 <form class="mt-4 grid gap-4 md:grid-cols-[1fr_auto]" method="POST" action="{{ route('gallery.upload') }}" enctype="multipart/form-data">
                     @csrf
                     <div>
                         <label class="mb-2 block text-sm font-medium text-stone-700" for="images">Photos</label>
-                        <input class="block w-full rounded-2xl border border-[#c8d6c5] bg-white px-4 py-3 text-sm" id="images" name="images[]" type="file" accept="image/*" multiple required>
+                        <input class="block w-full rounded-2xl border border-[#d8d8ca] bg-white px-4 py-3 text-sm" id="images" name="images[]" type="file" accept="image/*" multiple required>
                         @error('images')
                             <p class="mt-2 text-sm text-red-700">{{ $message }}</p>
                         @enderror
@@ -37,7 +37,7 @@
                 </form>
             </div>
         @else
-            <div class="rounded-[2rem] border border-[#e7ddd0] bg-[#f8f1e7] p-6">
+            <div class="rounded-[2rem] border border-[#efbfbb] bg-[#ffe5e4] p-6">
                 <p class="text-sm text-stone-700">
                     Sign in to upload wedding photos. Uploaded images are reviewed by an admin before appearing publicly.
                 </p>
@@ -55,7 +55,7 @@
                 </button>
             @empty
                 @for ($i = 1; $i <= 6; $i++)
-                    <div class="aspect-[4/3] rounded-[1.75rem] border border-dashed border-[#d8e1d1] bg-[linear-gradient(145deg,#eef3e8,#f8f1e7)]"></div>
+                    <div class="aspect-[4/3] rounded-[1.75rem] border border-dashed border-[#d8d8ca] bg-[linear-gradient(145deg,#ededdf,#ffe5e4)]"></div>
                 @endfor
             @endforelse
         </div>
