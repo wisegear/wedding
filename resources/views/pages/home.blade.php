@@ -11,8 +11,7 @@
                 {{ $intro }}
             </p>
             <p class="mt-4 max-w-2xl text-base leading-7 text-stone-500">
-                We are looking forward to our guests joining us for a weekend of celebration. This site allows you RSVP, 
-                tell us your meal preferences, and upload photos from the day. We will also be sharing travel information and local recommendations here.
+                {{ $guestIntro }}
             </p>
 
             <div class="mt-8 flex flex-wrap gap-3">
@@ -63,39 +62,57 @@
         </div>
     </section>
 
-    <section class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <article class="shadow-garden rounded-[2rem] border border-white/80 bg-white/92 p-6">
-            <p class="text-sage text-xs uppercase tracking-[0.35em]">The Day</p>
-            <h2 class="font-display mt-4 text-3xl text-[#4d513f]">A day to remember</h2>
-            <p class="mt-4 text-sm leading-7 text-stone-600">
-                Martin & Lyndsey are looking forward to celebrating their wedding with friends and family. 
-                The day will be filled with love, laughter, and memories to last a lifetime.
-            </p>
-        </article>
-
-        <article class="bg-garden-blend rounded-[2rem] border border-[#d8d8ca] p-6">
-            <p class="text-sage text-xs uppercase tracking-[0.35em]">Venue</p>
-            <h2 class="font-display mt-4 text-3xl text-[#4d513f]">{{ $venue['name'] }}</h2>
-            <p class="mt-4 text-sm leading-7 text-stone-600">
-                Historic, warm, and full of character. The venue has been lovingly restored, the perfect setting for a wedding celebration. 
-                The surrounding area offers stunning views plenty space for guests.
-            </p>
-        </article>
-
-        <article class="bg-garden-blush rounded-[2rem] border border-[#e6c9c7] p-6">
-            <p class="text-taupe text-xs uppercase tracking-[0.35em]">Guest Info</p>
-            <h2 class="font-display mt-4 text-3xl text-[#4d513f]">Everything you need</h2>
-            <p class="mt-4 text-sm leading-7 text-stone-600">
-                The site already includes the first public sections for travel planning and gallery uploads, with the admin side ready for moderation and guest management.
-            </p>
-        </article>
-
-        <article class="shadow-garden rounded-[2rem] border border-white/80 bg-white/92 p-6">
-            <p class="text-sage text-xs uppercase tracking-[0.35em]">QR Code</p>
-            <h2 class="font-display mt-4 text-3xl text-[#4d513f]">Share QR Code</h2>
-            <div class="mt-5 flex justify-center rounded-3xl bg-white p-4 ring-1 ring-[#666956]/15">
+    <section class="mt-12 grid gap-6 lg:grid-cols-4">
+        <article class="shadow-garden col-span-full rounded-[2rem] border border-white/80 bg-white/92 p-6">
+            <div class="relative pr-24 sm:pr-32">
+                <h2 class="font-display break-words text-3xl text-[#4d513f]">{{ $orderOfService->heading }}</h2>
+                @if ($orderOfService->tagline)
+                    <p class="mt-1 whitespace-pre-line break-words text-sm leading-7 text-stone-600">{{ $orderOfService->tagline }}</p>
+                @endif
                 <img
-                    class="aspect-square w-full max-w-48 object-contain"
+                    class="absolute inset-y-0 right-0 h-full w-20 object-contain object-right mix-blend-multiply sm:w-28"
+                    src="{{ asset('images/order-of-service.png') }}"
+                    alt="Illustrated wedding programme with botanical details, ribbon and wedding rings"
+                    width="1254"
+                    height="1254"
+                    loading="lazy"
+                >
+            </div>
+            <ol class="mt-8 space-y-4">
+                @forelse ($orderOfServiceItems as $item)
+                    <li class="relative pl-7 sm:pl-9">
+                        @unless ($loop->last)
+                            <span aria-hidden="true" class="absolute top-5 bottom-[-1.5rem] left-[5px] w-px bg-[#d8d8ca]"></span>
+                        @endunless
+                        <span aria-hidden="true" @class([
+                            'absolute top-7 left-0 size-3 rounded-full ring-4 ring-white',
+                            'bg-[#8d8e7c]' => $loop->odd,
+                            'bg-[#d6a39e]' => $loop->even,
+                        ])></span>
+                        <div @class([
+                            'flex flex-col items-start gap-3 rounded-3xl border p-4 sm:flex-row sm:items-center sm:gap-6 sm:px-6 sm:py-5',
+                            'bg-garden-blend border-[#d8d8ca]' => $loop->odd,
+                            'bg-garden-blush border-[#e6c9c7]' => $loop->even,
+                        ])>
+                            <time @class([
+                                'inline-flex min-w-24 shrink-0 justify-center rounded-full px-4 py-2 text-sm font-semibold tabular-nums',
+                                'bg-sage-deep text-white' => $loop->odd,
+                                'bg-[#f6d6d4] text-[#6f4945]' => $loop->even,
+                            ]) datetime="{{ $item->formTime() }}">{{ $item->displayTime() }}</time>
+                            <span class="font-display min-w-0 break-words text-2xl leading-snug text-[#4d513f]">{{ $item->title }}</span>
+                        </div>
+                    </li>
+                @empty
+                    <li class="bg-garden-soft rounded-3xl border border-[#d8d8ca] px-6 py-5 text-stone-600">Timings will be shared soon.</li>
+                @endforelse
+            </ol>
+        </article>
+
+        <article class="shadow-garden col-span-full flex items-center justify-between gap-4 rounded-2xl border border-white/80 bg-white/92 px-5 py-3">
+            <h2 class="font-display text-xl text-[#4d513f]">Share QR Code</h2>
+            <div class="shrink-0 rounded-xl bg-white p-2 ring-1 ring-[#666956]/15">
+                <img
+                    class="size-20 object-contain"
                     src="{{ asset('images/wedding-qr.png') }}"
                     alt="QR code for the wedding website"
                 >

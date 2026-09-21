@@ -30,6 +30,12 @@
                     <flux:sidebar.item icon="book-open-text" :href="route('admin.dining.index')" :current="request()->routeIs('admin.dining.*')" wire:navigate>
                         {{ __('Dining') }}
                     </flux:sidebar.item>
+                    <flux:sidebar.item icon="book-open-text" :href="route('admin.order-of-service.index')" :current="request()->routeIs('admin.order-of-service.*')" wire:navigate>
+                        {{ __('Edit Homepage') }}
+                    </flux:sidebar.item>
+                    <flux:sidebar.item icon="book-open-text" :href="route('admin.wedding-party.index')" :current="request()->routeIs('admin.wedding-party.*')" wire:navigate>
+                        {{ __('Wedding Party') }}
+                    </flux:sidebar.item>
                     <flux:sidebar.item icon="folder-git-2" :href="route('admin.gallery.index')" :current="request()->routeIs('admin.gallery.*')" wire:navigate>
                         {{ __('Gallery') }}
                     </flux:sidebar.item>
@@ -108,7 +114,9 @@
                 </section>
             @endif
 
-            @yield('content')
+            <div class="text-stone-900 scheme-light">
+                @yield('content')
+            </div>
         </flux:main>
 
         @persist('toast')

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OrderOfService;
+use App\Models\OrderOfServiceItem;
 use Carbon\CarbonImmutable;
 use Illuminate\Contracts\View\View;
 
@@ -18,10 +20,15 @@ class HomeController extends Controller
         $weddingDay = $weddingDate->startOfDay();
         $daysUntil = max(0, $today->diffInDays($weddingDay, false));
 
+        $orderOfService = OrderOfService::settings();
+
         return view('pages.home', [
-            'intro' => config('wedding.intro'),
+            'orderOfService' => $orderOfService,
+            'orderOfServiceItems' => OrderOfServiceItem::query()->orderBy('starts_at')->orderBy('id')->get(),
+            'intro' => $orderOfService->intro,
+            'guestIntro' => $orderOfService->guest_intro,
             'siteName' => config('wedding.site_name'),
-            'couple' => config('wedding.couple'),
+            'couple' => ['partner_one' => $orderOfService->partner_one, 'partner_two' => $orderOfService->partner_two],
             'weddingDate' => $weddingDate,
             'venue' => config('wedding.venue'),
             'countdown' => [
