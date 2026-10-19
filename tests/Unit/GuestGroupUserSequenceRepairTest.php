@@ -52,4 +52,5 @@ test('postgres sequence repair preserves rows and generates a safe next id', fun
     'already ahead' => ['bigserial', 85, 100, true, 101],
     'unused conflicting value' => ['bigserial', 2, 2, false, 3],
     'empty table' => ['bigserial', null, 1, false, 1],
+    'empty table with an advanced sequence' => ['bigserial', null, 100, true, 101],
 ]);
